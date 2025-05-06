@@ -1,0 +1,16 @@
+[package]
+name = "voting"
+version = "1.0.0"
+authors = []
+
+[addresses]
+voting = "0x57e85d887d89a2231d362d6cc6fd4ecfcac5d98a8913ac440a605dd06fe45c64"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
