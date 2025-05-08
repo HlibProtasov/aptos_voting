@@ -31,12 +31,14 @@ module voting::vote {
 
     }
     public entry fun init(creator: &signer) {
-        let addr = signer::address_of(creator);
-        assert!(!exists<VotingProgram>(addr), EAlreadyExists);
-        assert!(addr == @voting, EWrongSigner);
         let constructor_ref =  object::create_named_object(creator, VotingProgramSeeds);
-
         let object_signer = object::generate_signer(&constructor_ref);
+
+        let object_addr = signer::address_of(&object_signer);
+        let addr = signer::address_of(creator);
+        assert!(!exists<VotingProgram>(object_addr), EAlreadyExists);
+        assert!(addr == @voting, EWrongSigner);
+     
         let voting_program = VotingProgram {
             votings: table::new(),
             votingId: 0
